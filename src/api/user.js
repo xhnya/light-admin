@@ -1,10 +1,13 @@
 import request from '@/utils/request'
 
-export function login(data) {
+export function login(username, password) {
   return request({
     url: '/vue-admin-template/user/login',
     method: 'post',
-    data
+    data: {
+      username,
+      password
+    }
   })
 }
 
