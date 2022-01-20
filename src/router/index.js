@@ -54,6 +54,25 @@ export const constantRoutes = [
       meta: { title: 'Dashboard', icon: 'dashboard' }
     }]
   },
+  {
+    path: '/admin',
+    component: Layout,
+    redirect: '/admin/index/rotation',
+    name: 'AdminIndex',
+    meta: { title: '管理', icon: 'el-icon-document' },
+    children: [{
+      path: 'index',
+      name: 'AdminIndex',
+      component: () => import('@/views/admin/index'),
+      meta: { title: '页面管理', icon: 'el-icon-document' },
+      children: [{
+        path: 'rotation',
+        name: 'GameRotation',
+        component: () => import('@/views/admin/index/rotation'),
+        meta: { title: '首页轮播图', icon: 'el-icon-picture' }
+      }]
+    }]
+  },
 
   {
     path: '/example',
