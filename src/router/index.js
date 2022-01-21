@@ -65,12 +65,14 @@ export const constantRoutes = [
       name: 'AdminIndex',
       component: () => import('@/views/admin/index'),
       meta: { title: '页面管理', icon: 'el-icon-document' },
-      children: [{
-        path: 'rotation',
-        name: 'GameRotation',
-        component: () => import('@/views/admin/index/rotation'),
-        meta: { title: '首页轮播图', icon: 'el-icon-picture' }
-      }]
+      children: [
+        {
+          path: 'rotation',
+          name: 'GameRotation',
+          component: () => import('@/views/admin/index/rotation'),
+          meta: { title: '首页轮播图', icon: 'el-icon-picture' }
+        }
+      ]
     }]
   },
 
