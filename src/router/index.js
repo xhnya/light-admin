@@ -75,6 +75,61 @@ export const constantRoutes = [
       ]
     }]
   },
+  {
+    path: '/game',
+    component: Layout,
+    redirect: '/game/index',
+    name: 'GameIndex',
+    meta: { title: '游戏管理', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'index',
+        name: 'GameIndex',
+        component: () => import('@/views/game/game'),
+        meta: { title: '游戏', icon: 'el-icon-coordinate' }
+      },
+      {
+        path: 'add',
+        name: 'GameAdd',
+        component: () => import('@/views/game/game/add.vue'),
+        // meta: { title: '游戏', icon: 'el-icon-coordinate' }
+        hidden: true
+      },
+      {
+        path: 'prize',
+        name: 'GamePrize',
+        component: () => import('@/views/game/prize'),
+        meta: { title: '奖项', icon: 'el-icon-trophy' }
+      }
+      ,
+      {
+        path: 'other',
+        name: 'GameOther',
+        component: () => import('@/views/game/other'),
+        meta: { title: '其他', icon: 'el-icon-menu' },
+        children: [
+          {
+            path: 'product',
+            name: 'GameOtherProduct',
+            component: () => import('@/views/game/other/producers'),
+            meta: { title: '游戏厂商', icon: 'el-icon-office-building' }
+          },
+          {
+            path: 'type',
+            name: 'GameType',
+            component: () => import('@/views/game/other/type'),
+            meta: { title: '游戏类型', icon: 'el-icon-folder' }
+          },
+          {
+            path: 'tags',
+            name: 'GameTags',
+            component: () => import('@/views/game/other/tags'),
+            meta: { title: '游戏标签', icon: 'el-icon-collection-tag' }
+          }
+        ]
+      }
+    ]
+  },
 
   {
     path: '/example',
