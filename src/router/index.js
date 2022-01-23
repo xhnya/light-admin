@@ -96,12 +96,25 @@ export const constantRoutes = [
         hidden: true
       },
       {
+        path: 'file',
+        name: 'GameFile',
+        component: () => import('@/views/game/game/file.vue'),
+        // meta: { title: '游戏', icon: 'el-icon-coordinate' }
+        hidden: true
+      },
+      {
+        path: 'tags',
+        name: 'GameTags',
+        component: () => import('@/views/game/game/tags.vue'),
+        // meta: { title: '游戏', icon: 'el-icon-coordinate' }
+        hidden: true
+      },
+      {
         path: 'prize',
         name: 'GamePrize',
         component: () => import('@/views/game/prize'),
         meta: { title: '奖项', icon: 'el-icon-trophy' }
-      }
-      ,
+      },
       {
         path: 'other',
         name: 'GameOther',

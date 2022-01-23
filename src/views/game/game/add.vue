@@ -5,7 +5,7 @@
         <el-step description="添加游戏基本信息" title="步骤 1" icon="el-icon-edit">
         </el-step>
         <el-step description="上传游戏相关文件" title="步骤 2" icon="el-icon-upload"></el-step>
-        <el-step description="配置游戏其他信息" title="步骤 3" icon="el-icon-picture"></el-step>
+        <el-step description="配置游戏其他信息" title="步骤 3" icon="el-icon-collection-tag"></el-step>
       </el-steps>
       <!--      第一步================-->
       <div v-if="active===1" style="margin-top: 30px;">
@@ -97,7 +97,8 @@ export default {
       gameTypeSelect: {},
       isHot: false,
       gameMakingSelect: {},
-      gameIssueSelect: {}
+      gameIssueSelect: {},
+      gameId: 0
     }
   },
   created() {
@@ -106,11 +107,18 @@ export default {
   },
   methods: {
     onSubmit() {
-      this.active++
       addGame.saveGamInfo(this.form).then((res) => {
         this.$message({
           message: '添加成功，请继续完善',
           type: 'success'
+        })
+        console.log(res)
+        this.gameId = res.data.gameId
+        this.$router.push({
+          name: 'GameFile',
+          params: {
+            id: this.gameId
+          }
         })
       })
     },

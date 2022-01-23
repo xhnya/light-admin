@@ -21,14 +21,22 @@
       >
         <el-table-column
           fixed
-          prop="date"
-          label="日期"
-          width="150"
+          label="名称"
+          width="120"
         >
+          <template slot-scope="scope">
+            <el-popover trigger="hover" placement="top">
+              <p>{{ scope.row.gameNameChina }}</p>
+              <div slot="reference" class="name-wrapper">
+                <span>{{ scope.row.gameName }}</span>
+              </div>
+            </el-popover>
+          </template>
+
         </el-table-column>
         <el-table-column
           prop="name"
-          label="姓名"
+          label="类型"
           width="120"
         >
         </el-table-column>
@@ -72,70 +80,59 @@
           </template>
         </el-table-column>
       </el-table>
+      <div class="block page">
+        <el-pagination
+          @size-change="sizeChangeHandle"
+          @current-change="currentChangeHandle"
+          :current-page="page"
+          :page-sizes="[10, 50, 100, 500]"
+          :page-size.sync="limit"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="total"
+        >
+        </el-pagination>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import game from '@/api/game'
+
 export default {
   data() {
     return {
-      tableData: [
-        {
-          date: '2016-05-03',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }, {
-          date: '2016-05-02',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }, {
-          date: '2016-05-08',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }, {
-          date: '2016-05-06',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }, {
-          date: '2016-05-07',
-          name: '王小虎',
-          province: '上海',
-          city: '普陀区',
-          address: '上海市普陀区金沙江路 1518 弄',
-          zip: 200333
-        }],
+      tableData: [],
       dialogFormVisible: false,
-      searchName: ''
+      searchName: '',
+      page: 1,
+      limit: 10,
+      total: 10
     }
   },
+  created() {
+    this.getGameList()
+  },
   methods: {
+    sizeChangeHandle(val) {
+      this.limit = val
+      this.page = 1
+      this.getGameList()
+    },
+    // 当前页
+    currentChangeHandle(val) {
+      this.page = val
+      this.getGameList()
+    },
+    getGameList() {
+      game.getGameList().then((res) => {
+        this.tableData = res.data.page.list
+        this.page = res.data.page.currPage
+        this.total = res.data.page.totalCount
+
+        console.log(res)
+      })
+    },
     deleteRow(index, rows) {
       rows.splice(index, 1)
     },

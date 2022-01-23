@@ -97,12 +97,56 @@ export default {
       data: ids
     })
   },
+  selectTagsList() {
+    return request({
+      url: '/game/tags/tagsList',
+      method: 'get'
+    })
+  },
+  addGameTags(tagsList) {
+    return request({
+      url: '/game/gametags/saveList',
+      method: 'post',
+      data: tagsList
+    })
+  },
   // ==============添加
   saveGamInfo(game) {
     return request({
       url: '/game/game/save',
       method: 'post',
       data: game
+    })
+  },
+  uploadFile(game) {
+    return request({
+      url: '/game/game/update',
+      method: 'post',
+      data: game
+    })
+  },
+  addGameBanner(banner) {
+    return request({
+      url: '/game/banner/save',
+      method: 'post',
+      data: banner
+    })
+  },
+  addComputerConfig(computerConfig) {
+    return request({
+      url: '/game/computerconfig/save',
+      method: 'post',
+      data: computerConfig
+    })
+  },
+  getGameList(page, limit) {
+    return request({
+      url: '/game/game/list',
+      method: 'get',
+      params: {
+        page: page,
+        limit: limit
+      }
     })
   }
 }
