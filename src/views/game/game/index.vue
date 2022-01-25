@@ -42,25 +42,31 @@
         </el-table-column>
         <el-table-column
           prop="province"
-          label="省份"
+          label="发行"
           width="120"
         >
         </el-table-column>
         <el-table-column
           prop="city"
-          label="市区"
+          label="制作"
           width="120"
         >
         </el-table-column>
         <el-table-column
           prop="address"
-          label="地址"
+          label="是否热门"
           width="300"
         >
         </el-table-column>
         <el-table-column
           prop="zip"
-          label="邮编"
+          label="价格"
+          width="120"
+        >
+        </el-table-column>
+        <el-table-column
+          prop="zip"
+          label="发行时间"
           width="120"
         >
         </el-table-column>

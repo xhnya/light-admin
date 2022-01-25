@@ -141,12 +141,12 @@ export default {
   },
   getGameList(page, limit) {
     return request({
-      url: '/game/game/list',
-      method: 'get',
-      params: {
-        page: page,
-        limit: limit
-      }
+      url: '/game/game/gameList',
+      method: 'get'
+      // params: {
+      //   page: page,
+      //   limit: limit
+      // }
     })
   }
 }
