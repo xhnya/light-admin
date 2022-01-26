@@ -89,6 +89,13 @@ export const constantRoutes = [
         meta: { title: '游戏', icon: 'el-icon-coordinate' }
       },
       {
+        path: 'info/:id',
+        name: 'GameInfo',
+        component: () => import('@/views/game/game/gameInfo.vue'),
+        // meta: { title: '游戏', icon: 'el-icon-coordinate' }
+        hidden: true
+      },
+      {
         path: 'add',
         name: 'GameAdd',
         component: () => import('@/views/game/game/add.vue'),

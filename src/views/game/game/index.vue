@@ -20,7 +20,12 @@
         max-height="80%"
       >
         <el-table-column
-          fixed
+          prop="id"
+          label="游戏id"
+          width="120"
+        >
+        </el-table-column>
+        <el-table-column
           label="名称"
           width="120"
         >
@@ -35,49 +40,62 @@
 
         </el-table-column>
         <el-table-column
-          prop="name"
+          prop="gameType"
           label="类型"
           width="120"
         >
         </el-table-column>
         <el-table-column
-          prop="province"
+          prop="gameIssue"
           label="发行"
           width="120"
         >
         </el-table-column>
         <el-table-column
-          prop="city"
+          prop="gameMaking"
           label="制作"
           width="120"
         >
         </el-table-column>
         <el-table-column
-          prop="address"
+          prop="isHot"
           label="是否热门"
-          width="300"
+          width="120"
         >
         </el-table-column>
         <el-table-column
-          prop="zip"
+          prop="price"
           label="价格"
           width="120"
         >
         </el-table-column>
         <el-table-column
-          prop="zip"
+          prop="releaseTime"
           label="发行时间"
-          width="120"
+          width="300"
         >
         </el-table-column>
         <el-table-column
-          fixed="right"
           label="操作"
           width="120"
         >
           <template slot-scope="scope">
             <el-button
-              @click.native.prevent="deleteRow(scope.$index, tableData)"
+              @click="getGameInfo(scope.row)"
+              type="text"
+              size="small"
+            >
+              查看
+            </el-button>
+            <el-button
+              @click="deleteRow(scope.$index, tableData)"
+              type="text"
+              size="small"
+            >
+              修改
+            </el-button>
+            <el-button
+              @click="deleteRow(scope.$index, tableData)"
               type="text"
               size="small"
             >
@@ -147,6 +165,9 @@ export default {
     },
     toAddGame() {
       this.$router.push({ path: '/game/add' })
+    },
+    getGameInfo(val) {
+      this.$router.push({ path: `/game/info/${val.id}` })
     }
 
   }

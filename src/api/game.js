@@ -148,5 +148,11 @@ export default {
       //   limit: limit
       // }
     })
+  },
+  getGameInfo(id) {
+    return request({
+      url: '/game/game/gameList',
+      method: 'get'
+    })
   }
 }
