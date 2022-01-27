@@ -123,6 +123,32 @@ export const constantRoutes = [
         meta: { title: '奖项', icon: 'el-icon-trophy' }
       },
       {
+        path: 'attribute',
+        name: 'GameAttribute',
+        component: () => import('@/views/game/other'),
+        meta: { title: '属性', icon: 'el-icon-more-outline' },
+        children: [
+          {
+            path: 'banner',
+            name: 'GameAttributeBanner',
+            component: () => import('@/views/game/attribute/banner'),
+            meta: { title: '游戏轮播图', icon: 'el-icon-picture-outline' }
+          },
+          {
+            path: 'type',
+            name: 'GameType',
+            component: () => import('@/views/game/other/type'),
+            meta: { title: '游戏类型', icon: 'el-icon-folder' }
+          },
+          {
+            path: 'tags',
+            name: 'GameTags',
+            component: () => import('@/views/game/other/tags'),
+            meta: { title: '游戏标签', icon: 'el-icon-collection-tag' }
+          }
+        ]
+      },
+      {
         path: 'other',
         name: 'GameOther',
         component: () => import('@/views/game/other'),
