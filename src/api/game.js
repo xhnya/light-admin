@@ -154,5 +154,12 @@ export default {
       url: '/game/game/gameList',
       method: 'get'
     })
+  },
+  // 获取游戏的banner列表
+  getGameBannerList() {
+    return request({
+      url: '/game/banner/getGameBannerList',
+      method: 'get'
+    })
   }
 }
