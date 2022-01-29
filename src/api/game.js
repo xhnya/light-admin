@@ -161,5 +161,14 @@ export default {
       url: '/game/banner/getGameBannerList',
       method: 'get'
     })
+  },
+  getGameBannerUrl(id) {
+    return request({
+      url: '/game/banner/getGameBannerUrl',
+      method: 'get',
+      params: {
+        id: id
+      }
+    })
   }
 }

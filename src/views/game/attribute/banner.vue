@@ -7,40 +7,63 @@
       >
 
         <el-table-column
-          prop="name"
+          prop="gameName"
           label="游戏名称"
           width="180"
         >
         </el-table-column>
         <el-table-column
-          prop="address"
           label="轮播图"
         >
+          <template slot-scope="scope">
+            <el-button @click="watchBanner(scope.row.gameId)" mini>点击查看</el-button>
+          </template>
         </el-table-column>
         <el-table-column
-          prop="address"
           label="状态"
+        >
+          <template slot-scope="scope">
+            <el-tag v-if="scope.row.isDel===0">正常</el-tag>
+            <el-tag type="danger" v-else>正常</el-tag>
+          </template>
+        </el-table-column>
+        <el-table-column
+          prop="nums"
+          label="数量"
         >
         </el-table-column>
         <el-table-column
-          prop="date"
-          label="日期"
+          prop="updateTime"
+          label="更改时间"
           width="180"
         ></el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button
               size="mini"
-              @click="handleEdit(scope.$index, scope.row)">编辑
+              @click="handleEdit(scope.$index, scope.row)"
+            >编辑
             </el-button>
             <el-button
               size="mini"
               type="danger"
-              @click="handleDelete(scope.$index, scope.row)">删除
+              @click="handleDelete(scope.$index, scope.row)"
+            >删除
             </el-button>
           </template>
         </el-table-column>
       </el-table>
+      <el-dialog title="轮播图" :visible.sync="dialogTableVisible">
+        <el-carousel height="300px">
+          <el-carousel-item v-for="(item,index) in bannerUrl" :key="index">
+            <el-image
+              style="width: 100%; height: 100%"
+              :src="item"
+              fit="fill"
+            ></el-image>
+          </el-carousel-item>
+        </el-carousel>
+      </el-dialog>
     </div>
   </div>
 </template>
@@ -51,7 +74,9 @@ import game from '@/api/game'
 export default {
   data() {
     return {
-      tableData: []
+      tableData: [],
+      dialogTableVisible: false,
+      bannerUrl: []
     }
   },
   created() {
@@ -69,11 +94,33 @@ export default {
         console.log(data)
         this.tableData = data.page.list
       })
+    },
+    watchBanner(val) {
+      this.dialogTableVisible = true
+      game.getGameBannerUrl(val).then((res) => {
+        console.log(res)
+        this.bannerUrl = res.data.result
+      })
+
     }
   }
 }
 </script>
 
 <style scoped>
+.el-carousel__item h3 {
+  color: #475669;
+  font-size: 14px;
+  opacity: 0.75;
+  line-height: 150px;
+  margin: 0;
+}
 
+.el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n+1) {
+  background-color: #d3dce6;
+}
 </style>
