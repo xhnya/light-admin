@@ -20,14 +20,6 @@
           </template>
         </el-table-column>
         <el-table-column
-          label="状态"
-        >
-          <template slot-scope="scope">
-            <el-tag v-if="scope.row.isDel===0">正常</el-tag>
-            <el-tag type="danger" v-else>正常</el-tag>
-          </template>
-        </el-table-column>
-        <el-table-column
           prop="nums"
           label="数量"
         >
@@ -41,7 +33,7 @@
           <template slot-scope="scope">
             <el-button
               size="mini"
-              @click="handleEdit(scope.$index, scope.row)"
+              @click="handleEdit(scope.row.gameId)"
             >编辑
             </el-button>
             <el-button
@@ -58,11 +50,24 @@
           <el-carousel-item v-for="(item,index) in bannerUrl" :key="index">
             <el-image
               style="width: 100%; height: 100%"
-              :src="item"
+              :src="item.url"
               fit="fill"
             ></el-image>
           </el-carousel-item>
         </el-carousel>
+      </el-dialog>
+      <el-dialog title="轮播图修改" :visible.sync="dialogTableVisible1">
+        <el-card>
+          11
+        </el-card>
+        <el-pagination
+          small
+          @current-change="changeBannerPage"
+          layout="prev, pager, next"
+          :page-size="1"
+          :total="total"
+        >
+        </el-pagination>
       </el-dialog>
     </div>
   </div>
@@ -76,15 +81,20 @@ export default {
     return {
       tableData: [],
       dialogTableVisible: false,
-      bannerUrl: []
+      bannerUrl: [],
+      dialogTableVisible1: false,
+      total: 10
     }
   },
   created() {
     this.getGameBannerList()
   },
   methods: {
-    handleEdit(index, row) {
-      console.log(index, row)
+    handleEdit(val) {
+      this.dialogTableVisible1 = true
+      game.getGameBannerUrl(val).then((res) => {
+        console.log(res)
+      })
     },
     handleDelete(index, row) {
       console.log(index, row)
@@ -101,6 +111,10 @@ export default {
         console.log(res)
         this.bannerUrl = res.data.result
       })
+    },
+    changeBannerPage(val) {
+      console.log(val)
+
 
     }
   }
