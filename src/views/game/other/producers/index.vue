@@ -110,12 +110,12 @@ export default {
     sizeChangeHandle(val) {
       this.limit = val
       this.page = 1
-      this.getBannerList()
+      this.getProductList()
     },
     // 当前页
     currentChangeHandle(val) {
       this.page = val
-      this.getBannerList()
+      this.getProductList()
     },
     getProductList() {
       product.getProductList(this.page, this.limit).then((res) => {

@@ -156,10 +156,14 @@ export default {
     })
   },
   // 获取游戏的banner列表
-  getGameBannerList() {
+  getGameBannerList(page, limit) {
     return request({
       url: '/game/banner/getGameBannerList',
-      method: 'get'
+      method: 'get',
+      params: {
+        page: page,
+        limit: limit
+      }
     })
   },
   getGameBannerUrl(id) {
@@ -169,6 +173,38 @@ export default {
       params: {
         id: id
       }
+    })
+  },
+  changeBannerPage(page, limit, gameId) {
+    return request({
+      url: '/game/banner/getGameBannerUrlByGameId',
+      method: 'get',
+      params: {
+        page: page,
+        limit: limit,
+        gameId: gameId
+      }
+    })
+  },
+  changeBannerUrl(banner) {
+    return request({
+      url: '/game/banner/update',
+      method: 'post',
+      data: banner
+    })
+  },
+  addBannerImageUrl(banner) {
+    return request({
+      url: '/game/banner/save',
+      method: 'post',
+      data: banner
+    })
+  },
+  deleteGameBanner(ids) {
+    return request({
+      url: '/game/banner/delete',
+      method: 'post',
+      data: ids
     })
   }
 }
