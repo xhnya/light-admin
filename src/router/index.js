@@ -137,8 +137,8 @@ export const constantRoutes = [
           {
             path: 'type',
             name: 'GameType',
-            component: () => import('@/views/game/other/type'),
-            meta: { title: '游戏类型', icon: 'el-icon-folder' }
+            component: () => import('@/views/game/attribute/score'),
+            meta: { title: '游戏评分', icon: 'el-icon-star-on' }
           },
           {
             path: 'tags',
