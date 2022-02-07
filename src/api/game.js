@@ -206,5 +206,28 @@ export default {
       method: 'post',
       data: ids
     })
+  },
+  gameListForSelect() {
+    return request({
+      url: '/game/game/gameListForSelect',
+      method: 'get'
+    })
+  },
+  addScore(score) {
+    return request({
+      url: '/game/score/save',
+      method: 'post',
+      data: score
+    })
+  },
+  getScoreList(page, limit) {
+    return request({
+      url: '/game/score/list',
+      method: 'get',
+      params: {
+        page: page,
+        limit: limit
+      }
+    })
   }
 }
