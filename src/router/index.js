@@ -176,7 +176,27 @@ export const constantRoutes = [
       }
     ]
   },
-
+  {
+    path: '/community',
+    component: Layout,
+    redirect: '/community/index',
+    name: 'Community',
+    meta: { title: '社区管理', icon: 'el-icon-house' },
+    children: [
+      {
+        path: 'table',
+        name: 'Table',
+        component: () => import('@/views/table/index'),
+        meta: { title: 'Table', icon: 'table' }
+      },
+      {
+        path: 'tree',
+        name: 'Tree',
+        component: () => import('@/views/tree/index'),
+        meta: { title: 'Tree', icon: 'tree' }
+      }
+    ]
+  },
   {
     path: '/example',
     component: Layout,
