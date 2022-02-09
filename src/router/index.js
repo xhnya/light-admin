@@ -184,17 +184,23 @@ export const constantRoutes = [
     meta: { title: '社区管理', icon: 'el-icon-house' },
     children: [
       {
-        path: 'type',
-        name: 'type',
-        component: () => import('@/views/table/index'),
-        meta: { title: '文章类型管理', icon: 'table' }
+        path: 'page',
+        name: 'page',
+        component: () => import('@/views/community/page'),
+        meta: { title: '文章管理', icon: 'el-icon-document' }
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
-      }
+        path: 'add',
+        name: 'add',
+        component: () => import('@/views/community/page/add'),
+        hidden: true
+      },
+      {
+        path: 'type',
+        name: 'type',
+        component: () => import('@/views/community/type'),
+        meta: { title: '文章类型管理', icon: 'el-icon-document' }
+      },
     ]
   },
   {
