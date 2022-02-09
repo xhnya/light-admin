@@ -184,10 +184,10 @@ export const constantRoutes = [
     meta: { title: '社区管理', icon: 'el-icon-house' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
+        path: 'type',
+        name: 'type',
         component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        meta: { title: '文章类型管理', icon: 'table' }
       },
       {
         path: 'tree',
