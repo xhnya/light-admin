@@ -7,5 +7,12 @@ export default {
       method: 'post',
       data: article
     })
+  },
+  getPageList(params) {
+    return request({
+      url: '/community/article/pageAdminList',
+      method: 'get',
+      params: params
+    })
   }
 }
