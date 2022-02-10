@@ -204,6 +204,33 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/user',
+    component: Layout,
+    redirect: '/user/index',
+    name: 'user',
+    meta: { title: '用户管理', icon: 'el-icon-user-solid' },
+    children: [
+      {
+        path: 'index',
+        name: 'user',
+        component: () => import('@/views/user/user'),
+        meta: { title: '用户管理', icon: 'el-icon-user-solid' }
+      },
+      {
+        path: 'level',
+        name: 'level',
+        component: () => import('@/views/user/level'),
+        meta: { title: '等级管理', icon: 'el-icon-s-order' }
+      },
+      {
+        path: 'type',
+        name: 'type',
+        component: () => import('@/views/community/type'),
+        meta: { title: '文章类型管理', icon: 'el-icon-document' }
+      },
+    ]
+  },
+  {
     path: '/example',
     component: Layout,
     redirect: '/example/table',
