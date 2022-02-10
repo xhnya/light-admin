@@ -9,8 +9,8 @@
                 <span>等级列表</span>
                 <el-button @click="dialogVisible = true" style="float: right; padding: 3px 0" type="text">添加</el-button>
               </div>
-              <div v-for="o in 4" :key="o" class="text item user-level-card-text">
-                {{ '列表内容 ' + o }}
+              <div v-for="itme in levelList" :key="itme.id" class="text item user-level-card-text">
+                {{ itme.levelName }}
                 <el-button size="mini">修改</el-button>
                 <el-button size="mini">删除</el-button>
               </div>
@@ -39,7 +39,8 @@
       title="添加等级"
       :visible.sync="dialogVisible"
       width="30%"
-      :before-close="handleClose">
+      :before-close="handleClose"
+    >
       <div> 等级名称:
         <el-input style="width:60%" v-model="level.levelName" placeholder="请输入内容"></el-input>
       </div>
@@ -56,34 +57,45 @@
 </template>
 
 <script>
-import {addLevel} from '@/api/user'
+import { addLevel } from '@/api/user'
+import user from '@/api/users'
 
 export default {
   data() {
     return {
       level: {},
-      dialogVisible: false
+      dialogVisible: false,
+      levelList: []
     }
   },
+  created() {
+    this.getLevelList()
+  },
   methods: {
+    getLevelList() {
+      user.getLevelList().then((res) => {
+        console.log(res)
+        this.levelList = res.data.page.list
+      })
+    },
     addLevels() {
       addLevel(this.level).then((res) => {
         console.log(res)
         this.$message({
           message: '添加成功',
           type: 'success'
-        });
-        this.dialogVisible = false;
+        })
+        this.dialogVisible = false
         this.level = {}
       })
     },
     handleClose(done) {
       this.$confirm('确认关闭？')
         .then(_ => {
-          done();
+          done()
         })
         .catch(_ => {
-        });
+        })
     }
   }
 }
