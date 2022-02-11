@@ -26,5 +26,12 @@ export default {
       method: 'post',
       data: banner
     })
+  },
+  deleteBanner(ids) {
+    return request({
+      url: '/admin/banner/delete',
+      method: 'post',
+      data: ids
+    })
   }
 }

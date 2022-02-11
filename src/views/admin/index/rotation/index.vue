@@ -264,7 +264,15 @@ export default {
       }
     },
     handleDelete(index, row) {
-      console.log(index, row)
+      const banner = []
+      banner.push(row.id)
+      adminApi.deleteBanner(banner).then((res) => {
+        this.$message({
+          message: '删除成功',
+          type: 'success'
+        })
+        this.getBannerList()
+      })
     },
     changeStart() {
       if (this.value1) {
