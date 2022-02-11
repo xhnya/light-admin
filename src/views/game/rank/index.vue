@@ -33,7 +33,7 @@
             <el-card class="box-card">
               <div slot="header" class="clearfix">
                 <span>最受期待榜</span>
-                <el-button style="float: right; padding: 3px 0" type="text">添加</el-button>
+                <el-button @click="addExpect" style="float: right; padding: 3px 0" type="text">添加</el-button>
               </div>
               <div v-for="item in expectList" :key="item.id" class="text item">
                 <span style="margin-right: 10px;">{{ item.sort }}</span><span>{{ item.gameName }}</span>
