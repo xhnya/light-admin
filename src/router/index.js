@@ -123,6 +123,12 @@ export const constantRoutes = [
         meta: { title: '奖项', icon: 'el-icon-trophy' }
       },
       {
+        path: 'rank',
+        name: 'GameRank',
+        component: () => import('@/views/game/rank'),
+        meta: { title: '排行榜', icon: 'el-icon-arrow-up' }
+      },
+      {
         path: 'attribute',
         name: 'GameAttribute',
         component: () => import('@/views/game/other'),

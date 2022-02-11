@@ -229,5 +229,21 @@ export default {
         limit: limit
       }
     })
+  },
+  addRank(rank) {
+    return request({
+      url: '/game/rank/save',
+      method: 'post',
+      data: rank
+    })
+  },
+  getRankList(val) {
+    return request({
+      url: '/game/rank/getRankList',
+      method: 'get',
+      params: {
+        type: val
+      }
+    })
   }
 }
