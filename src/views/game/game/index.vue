@@ -153,7 +153,6 @@ export default {
         this.tableData = res.data.page.list
         this.page = res.data.page.currPage
         this.total = res.data.page.totalCount
-
         console.log(res)
       })
     },
