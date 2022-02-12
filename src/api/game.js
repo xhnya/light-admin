@@ -245,5 +245,13 @@ export default {
         type: val
       }
     })
+  },
+  deleteRank(ids) {
+    return request({
+      url: '/game/rank/delete',
+      method: 'post',
+      data: ids
+    })
   }
+
 }
