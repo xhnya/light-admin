@@ -88,7 +88,7 @@
               查看
             </el-button>
             <el-button
-              @click="deleteRow(scope.$index, tableData)"
+              @click="deleteRow(scope.row)"
               type="text"
               size="small"
             >
@@ -156,8 +156,27 @@ export default {
         console.log(res)
       })
     },
-    deleteRow(index, rows) {
-      rows.splice(index, 1)
+    deleteRow(val) {
+      const ids = []
+      ids.push(val)
+      this.$confirm('是否删除游戏?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        game.deleteGame(ids).then((res) => {
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          })
+          this.getGameList()
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        })
+      })
     },
     submitGameInfo() {
       console.log('====')

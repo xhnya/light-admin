@@ -27,7 +27,7 @@
               </div>
               <div style="margin-top: 10px;" v-for="item in hostList" :key="item.id" class="text item">
                 <span style="margin-right: 10px;">{{ item.sort }}</span>
-                <span  style="margin-right: 10px;">{{ item.gameName }}</span>
+                <span style="margin-right: 10px;">{{ item.gameName }}</span>
                 <el-button size="mini" type="primary">编辑</el-button>
                 <el-button size="mini" @click="deleteRank(item.id)" type="danger">删除</el-button>
               </div>
@@ -173,9 +173,9 @@ export default {
         this.$message({
           type: 'info',
           message: '已取消删除'
-        });
-      });
-    },
+        })
+      })
+    }
   }
 }
 </script>

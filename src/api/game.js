@@ -252,6 +252,12 @@ export default {
       method: 'post',
       data: ids
     })
+  },
+  deleteGame(ids) {
+    return request({
+      url: '/game/game/delete',
+      method: 'post',
+      data: ids
+    })
   }
-
 }
