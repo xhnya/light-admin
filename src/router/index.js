@@ -155,6 +155,26 @@ export const constantRoutes = [
         ]
       },
       {
+        path: 'recommend',
+        name: 'GameRecommend',
+        component: () => import('@/views/game/recommend'),
+        meta: { title: '推荐', icon: 'el-icon-s-unfold' },
+        children: [
+          {
+            path: 'index',
+            name: 'GameRecommendIndex',
+            component: () => import('@/views/game/recommend/recommend'),
+            meta: { title: '推荐游戏', icon: 'el-icon-refresh-right' }
+          },
+          {
+            path: 'banner',
+            name: 'GameAttributeBanner',
+            component: () => import('@/views/game/attribute/banner'),
+            meta: { title: '优惠促销', icon: 'el-icon-picture-outline' }
+          }
+        ]
+      },
+      {
         path: 'other',
         name: 'GameOther',
         component: () => import('@/views/game/other'),

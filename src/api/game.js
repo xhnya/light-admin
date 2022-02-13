@@ -208,6 +208,7 @@ export default {
     })
   },
   gameListForSelect() {
+    // 获取游戏的列表使用select的形式展示
     return request({
       url: '/game/game/gameListForSelect',
       method: 'get'
@@ -258,6 +259,23 @@ export default {
       url: '/game/game/delete',
       method: 'post',
       data: ids
+    })
+  },
+  addGameRecommend(recommend) {
+    return request({
+      url: 'game/recommend/add',
+      method: 'post',
+      data: recommend
+    })
+  },
+  getGameRecommendList(params) {
+    return request({
+      url: 'game/recommend/list',
+      method: 'get',
+      params: {
+        page: params.page,
+        limit: params.limit
+      }
     })
   }
 }
