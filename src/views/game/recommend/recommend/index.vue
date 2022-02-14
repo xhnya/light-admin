@@ -13,19 +13,24 @@
         >
         </el-table-column>
         <el-table-column
-          prop="date"
+          prop="name"
           label="游戏"
           width="180"
         >
         </el-table-column>
         <el-table-column
-          prop="state"
           label="状态"
           width="180"
         >
+          <template slot-scope="scope">
+            <div>
+              <el-tag v-if="scope.row.state==0">正常</el-tag>
+              <el-tag v-if="scope.row.state==1">停用</el-tag>
+            </div>
+          </template>
         </el-table-column>
         <el-table-column
-          prop="update_time"
+          prop="time"
           label="时间"
           width="180"
         >
@@ -36,6 +41,11 @@
               size="mini"
               @click="handleEdit(scope.$index, scope.row)"
             >编辑
+            </el-button>
+            <el-button
+              size="mini"
+              @click="handleEdit(scope.$index, scope.row)"
+            >停用
             </el-button>
             <el-button
               size="mini"
@@ -160,6 +170,7 @@ export default {
           type: 'success'
         })
         this.value = ''
+        this.getRecommendList()
       })
     }
   }
