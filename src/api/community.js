@@ -14,5 +14,19 @@ export default {
       method: 'get',
       params: params
     })
+  },
+  addCommunityType(type) {
+    return request({
+      url: '/community/type/save',
+      method: 'post',
+      data: type
+    })
+  },
+  getCommunityTypeList(params) {
+    return request({
+      url: '/community/type/list',
+      method: 'get',
+      params: params
+    })
   }
 }

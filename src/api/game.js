@@ -274,7 +274,8 @@ export default {
       method: 'get',
       params: {
         page: params.page,
-        limit: params.limit
+        limit: params.limit,
+        type: params.type
       }
     })
   }

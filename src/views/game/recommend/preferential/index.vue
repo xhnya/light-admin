@@ -153,7 +153,7 @@ export default {
       const params = {}
       params.page = this.page
       params.limit = this.limit
-      params.type = 0
+      params.type = 1
       game.getGameRecommendList(params).then((res) => {
         this.tableData = res.data.page.list
         this.page = res.data.page.currPage
@@ -163,7 +163,7 @@ export default {
     addRecommend() {
       const recommend = {}
       recommend.gameId = this.value
-      recommend.type = 0
+      recommend.type = 1
       this.dialogVisible = false
       game.addGameRecommend(recommend).then((res) => {
         this.$message({
