@@ -210,6 +210,12 @@ export const constantRoutes = [
     meta: { title: '社区管理', icon: 'el-icon-house' },
     children: [
       {
+        path: 'community',
+        name: 'community',
+        component: () => import('@/views/community/community'),
+        meta: { title: '社区管理', icon: 'el-icon-house' }
+      },
+      {
         path: 'page',
         name: 'page',
         component: () => import('@/views/community/page'),

@@ -28,5 +28,28 @@ export default {
       method: 'get',
       params: params
     })
+  },
+  getCommunityList(params) {
+    return request({
+      url: '/community/community/list',
+      method: 'get',
+      params: {
+        page: params.page,
+        limit: params.limit
+      }
+    })
+  },
+  getCascaderOptionsData() {
+    return request({
+      url: '/community/community/getCommunityCascader',
+      method: 'get'
+    })
+  },
+  addCommunityEntity(community) {
+    return request({
+      url: '/community/community/save',
+      method: 'post',
+      data: community
+    })
   }
 }
