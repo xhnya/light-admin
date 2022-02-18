@@ -139,14 +139,14 @@ export default {
       data: computerConfig
     })
   },
-  getGameList(page, limit) {
+  getGameList(param) {
     return request({
       url: '/game/game/gameList',
-      method: 'get'
-      // params: {
-      //   page: page,
-      //   limit: limit
-      // }
+      method: 'get',
+      params: {
+        page: param.page,
+        limit: param.limit
+      }
     })
   },
   getGameInfo(id) {

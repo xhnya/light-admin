@@ -88,14 +88,14 @@
               查看
             </el-button>
             <el-button
-              @click="deleteRow(scope.row)"
+              @click="deleteRow(scope.row.id)"
               type="text"
               size="small"
             >
               修改
             </el-button>
             <el-button
-              @click="deleteRow(scope.$index, tableData)"
+              @click="deleteRow(scope.row.id)"
               type="text"
               size="small"
             >
@@ -149,7 +149,10 @@ export default {
       this.getGameList()
     },
     getGameList() {
-      game.getGameList().then((res) => {
+      const params = {}
+      params.page = this.page
+      params.limit = this.limit
+      game.getGameList(params).then((res) => {
         this.tableData = res.data.page.list
         this.page = res.data.page.currPage
         this.total = res.data.page.totalCount
@@ -157,6 +160,7 @@ export default {
       })
     },
     deleteRow(val) {
+      console.log(val)
       const ids = []
       ids.push(val)
       this.$confirm('是否删除游戏?', '提示', {

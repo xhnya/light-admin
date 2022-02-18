@@ -74,7 +74,7 @@
             <el-input v-model="form.website"></el-input>
           </el-form-item>
           <el-form-item label="游戏描述">
-            <el-input type="textarea" v-model="form.gameDescribe"></el-input>
+            <el-input type="textarea" autosize  v-model="form.gameDescribe"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="onSubmit">立即创建</el-button>
