@@ -51,5 +51,12 @@ export default {
       method: 'post',
       data: community
     })
+  },
+  deletePage(ids) {
+    return request({
+      url: '/community/article/delete',
+      method: 'post',
+      data: ids
+    })
   }
 }

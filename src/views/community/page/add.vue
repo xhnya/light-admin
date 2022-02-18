@@ -34,6 +34,14 @@
         >
           <el-button size="small" type="primary">上传封面</el-button>
         </el-upload>
+        <el-input
+          type="textarea"
+          autosize
+          placeholder="请输入描述"
+          maxlength="450"
+          show-word-limit
+          v-model="textarea">
+        </el-input>
       </div>
       <tinymce :height="600" v-model="content"></tinymce>
       <el-button @click="saveArticle" type="primary">立即创建</el-button>
@@ -59,7 +67,8 @@ export default {
       parentId: 0,
       url: '',
       fileList: [],
-      coverUrl: ''
+      coverUrl: '',
+      textarea: ''
     }
   },
   created() {
@@ -69,11 +78,10 @@ export default {
   methods: {
     saveArticle() {
       const article = {}
-      article.parentId = 1
-      article.user = 1
       article.title = this.title
       article.content = this.content
       article.parentId = this.parentId
+      article.description = this.textarea
       if (this.typeName === '类型选择') {
         article.publishType = '原创'
       } else {
@@ -107,7 +115,6 @@ export default {
         message: '上传成功',
         type: 'success'
       });
-
     }
 
   }

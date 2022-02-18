@@ -35,8 +35,12 @@
       </el-card>
       <el-card class="game-info-card111">
         <el-row>
-          <el-col :span="12"><div class="grid-content bg-purple">背景图</div></el-col>
-          <el-col :span="12"><div class="grid-content bg-purple-light">封面图</div></el-col>
+          <el-col :span="12">
+            <div class="grid-content bg-purple">背景图</div>
+          </el-col>
+          <el-col :span="12">
+            <div class="grid-content bg-purple-light">封面图</div>
+          </el-col>
         </el-row>
       </el-card>
     </div>
