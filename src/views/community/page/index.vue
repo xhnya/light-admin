@@ -101,7 +101,8 @@ export default {
     },
     getPageList() {
       const params = {}
-      params.page = 1
+      params.page = this.page
+      params.limit = this.limit
       community.getPageList(params).then((res) => {
         this.tableData = res.data.page.list
         this.page = res.data.page.currPage
