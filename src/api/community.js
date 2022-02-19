@@ -58,5 +58,11 @@ export default {
       method: 'post',
       data: ids
     })
+  },
+  reqSelectPage() {
+    return request({
+      url: '/community/article/getSelectPage',
+      method: 'get'
+    })
   }
 }

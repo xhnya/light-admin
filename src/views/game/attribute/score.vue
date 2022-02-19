@@ -5,36 +5,44 @@
         <el-button @click="openDialog(0)" type="primary">添加</el-button>
         <el-table
           :data="tableData"
-          style="width: 100%">
+          style="width: 100%"
+        >
           <el-table-column
             prop="id"
             label="id"
-            width="180">
+            width="180"
+          >
           </el-table-column>
           <el-table-column
             prop="gameId"
             label="游戏名称"
-            width="180">
+            width="180"
+          >
           </el-table-column>
           <el-table-column
             prop="type"
-            label="类型">
+            label="类型"
+          >
           </el-table-column>
           <el-table-column
             prop="gameScore"
-            label="分数">
+            label="分数"
+          >
           </el-table-column>
           <el-table-column
             prop="address"
-            label="评分标题">
+            label="评分标题"
+          >
           </el-table-column>
           <el-table-column
             prop="scoreName"
-            label="评分机构">
+            label="评分机构"
+          >
           </el-table-column>
           <el-table-column
             prop="createTime"
-            label="评分时间">
+            label="评分时间"
+          >
           </el-table-column>
         </el-table>
       </el-card>
@@ -54,7 +62,8 @@
         title="添加评分"
         :visible.sync="dialogVisible"
         width="30%"
-        :before-close="handleClose">
+        :before-close="handleClose"
+      >
         <div>
           <el-form ref="form" :model="form" label-width="80px">
             <el-form-item label="评分机构">
@@ -66,7 +75,19 @@
                   v-for="item in options"
                   :key="item.id"
                   :label="item.gameName"
-                  :value="item.id">
+                  :value="item.id"
+                >
+                </el-option>
+              </el-select>
+            </el-form-item>
+            <el-form-item label="文章">
+              <el-select v-model="form.pageId" filterable placeholder="请选择文章(可搜索)">
+                <el-option
+                  v-for="item in optionsPage"
+                  :key="item.id"
+                  :label="item.name"
+                  :value="item.id"
+                >
                 </el-option>
               </el-select>
             </el-form-item>
@@ -95,6 +116,7 @@
 
 <script>
 import game from '@/api/game'
+import community from '@/api/community'
 
 export default {
   data() {
@@ -108,13 +130,15 @@ export default {
         type: 0,
         scoreName: '',
         scoreDescribe: '',
-        sort: 0
+        sort: 0,
+        pageId: 0
       },
       options: {},
       isLight: false,
       page: 1,
       limit: 10,
-      total: 10
+      total: 10,
+      optionsPage: []
     }
   },
   created() {
@@ -156,6 +180,7 @@ export default {
     openDialog(val) {
       this.dialogVisible = true
       this.getGameList()
+      this.selectPage()
       if (val === 0) {
         this.form = {}
       }
@@ -166,9 +191,9 @@ export default {
     },
     onSubmit() {
       if (this.isLight) {
-        this.form.type = 1
-      } else {
         this.form.type = 0
+      } else {
+        this.form.type = 2
       }
       this.dialogVisible = false
       game.addScore(this.form).then((res) => {
@@ -177,6 +202,12 @@ export default {
           type: 'success'
         })
         this.form = {}
+        this.getScoreList()
+      })
+    },
+    selectPage() {
+      community.reqSelectPage().then((res) => {
+        this.optionsPage = res.data.result
       })
     }
 
