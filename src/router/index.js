@@ -253,13 +253,7 @@ export const constantRoutes = [
         name: 'level',
         component: () => import('@/views/user/level'),
         meta: { title: '等级管理', icon: 'el-icon-s-order' }
-      },
-      {
-        path: 'type',
-        name: 'type',
-        component: () => import('@/views/community/type'),
-        meta: { title: '文章类型管理', icon: 'el-icon-document' }
-      },
+      }
     ]
   },
   {
