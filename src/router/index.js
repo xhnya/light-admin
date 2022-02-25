@@ -71,6 +71,12 @@ export const constantRoutes = [
           name: 'GameRotation',
           component: () => import('@/views/admin/index/rotation'),
           meta: { title: '首页轮播图', icon: 'el-icon-picture' }
+        },
+        {
+          path: 'email',
+          name: 'GameRotation',
+          component: () => import('@/views/admin/index/email'),
+          meta: { title: '邮件推送', icon: 'el-icon-picture' }
         }
       ]
     }]

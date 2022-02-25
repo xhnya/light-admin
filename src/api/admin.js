@@ -33,5 +33,12 @@ export default {
       method: 'post',
       data: ids
     })
+  },
+  reqPushEmail(message) {
+    return request({
+      url: '/admin/push/message',
+      method: 'post',
+      data: message
+    })
   }
 }
