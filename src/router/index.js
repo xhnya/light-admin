@@ -171,6 +171,12 @@ export const constantRoutes = [
             name: 'GamePreferential',
             component: () => import('@/views/game/recommend/preferential'),
             meta: { title: '优惠促销', icon: 'el-icon-present' }
+          },
+          {
+            path: 'home',
+            name: 'GamePreferential',
+            component: () => import('@/views/game/recommend/homeRecommend'),
+            meta: { title: '首页推荐', icon: 'el-icon-house' }
           }
         ]
       },
@@ -232,7 +238,7 @@ export const constantRoutes = [
         name: 'type',
         component: () => import('@/views/community/type'),
         meta: { title: '文章类型管理', icon: 'el-icon-document' }
-      },
+      }
     ]
   },
   {

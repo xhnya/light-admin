@@ -278,5 +278,12 @@ export default {
         type: params.type
       }
     })
+  },
+  deleteRecommend(ids) {
+    return request({
+      url: 'game/recommend/delete',
+      method: 'post',
+      data: ids
+    })
   }
 }

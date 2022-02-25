@@ -1,4 +1,4 @@
-<template>
+homeRecommend<template>
   <div>
     <div style="margin: 30px;">
       <el-button @click="add" type="primary">添加</el-button>
