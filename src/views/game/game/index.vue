@@ -152,6 +152,7 @@ export default {
       const params = {}
       params.page = this.page
       params.limit = this.limit
+      params.gameName = this.searchName
       game.getGameList(params).then((res) => {
         this.tableData = res.data.page.list
         this.page = res.data.page.currPage
@@ -183,7 +184,7 @@ export default {
       })
     },
     submitGameInfo() {
-      console.log('====')
+      this.getGameList()
     },
     toAddGame() {
       this.$router.push({ path: '/game/add' })

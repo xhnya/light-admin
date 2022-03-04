@@ -145,7 +145,8 @@ export default {
       method: 'get',
       params: {
         page: param.page,
-        limit: param.limit
+        limit: param.limit,
+        gameName: param.gameName
       }
     })
   },
