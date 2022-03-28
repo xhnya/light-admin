@@ -30,5 +30,21 @@ export default {
       method: 'post',
       data: ids
     })
+  },
+  reqBanUser(ban) {
+    return request({
+      url: '/user/ban/ban',
+      method: 'post',
+      data: ban
+    })
+  },
+  reqRelieveUser(userId) {
+    return request({
+      url: '/user/ban/relieve',
+      method: 'post',
+      data: {
+        id: userId
+      }
+    })
   }
 }
