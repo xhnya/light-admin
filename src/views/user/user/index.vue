@@ -1,7 +1,18 @@
 <template>
   <div>
     <div style="margin: 30px">
-      <el-button @click="dialogVisible=true" type="primary">添加</el-button>
+      <div style="margin-top: 30px;">
+        <el-button @click="dialogVisible=true" type="primary">添加</el-button>
+        <el-input
+          placeholder="请输入名字"
+          v-model="searchName"
+          style="width: 300px;margin-left: 10px;"
+        >
+          <i slot="prefix" class="el-input__icon el-icon-search"></i>
+        </el-input>
+        <el-button type="primary" @click="submitUserInfo" icon="el-icon-search">搜索</el-button>
+        <el-button plain @click="reset">重置</el-button>
+      </div>
       <el-table
         ref="multipleTable"
         :data="tableData"
@@ -177,7 +188,8 @@ export default {
       dialogVisible1: false,
       nums: '',
       viewType: '小时',
-      userId: 0
+      userId: 0,
+      searchName: ''
     }
   },
   created() {
@@ -227,6 +239,7 @@ export default {
       const userParams = {}
       userParams.page = this.page
       userParams.limit = this.limit
+      userParams.name = this.searchName
       user.getUserList(userParams).then((res) => {
         console.log(res)
         this.tableData = res.data.page.list
@@ -298,6 +311,13 @@ export default {
           type: 'success'
         })
       })
+    },
+    reset() {
+      this.searchName = ''
+      this.getUserList()
+    },
+    submitUserInfo() {
+      this.getUserList()
     }
   }
 }

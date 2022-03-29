@@ -186,6 +186,10 @@ export default {
     submitGameInfo() {
       this.getGameList()
     },
+    reset() {
+      this.searchName = ''
+      this.getGameList()
+    },
     toAddGame() {
       this.$router.push({ path: '/game/add' })
     },

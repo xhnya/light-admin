@@ -20,7 +20,8 @@ export default {
       method: 'get',
       params: {
         page: user.page,
-        limit: user.limit
+        limit: user.limit,
+        name: user.name
       }
     })
   },
